@@ -33,6 +33,15 @@ jobs:
           pip install -r requirements.txt
           pip install black isort flake8
 
+      - name: Create .env from GitHub Secrets/Vars
+        run: |
+          cat > .env << 'EOF'
+          DEBUG=True
+          SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}
+          DB_ENGINE=sqlite3
+          ALLOWED_HOSTS=*
+          EOF
+
       - name: System deps for Pillow
         run: |
           sudo apt-get update
