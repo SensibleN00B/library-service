@@ -1,0 +1,6 @@
+[tool.black]
+line-length = 79
+target-version = ['py313']
+skip-string-normalization = false
+skip-magic-trailing-comma = false
+include = '\.pyi?$'
