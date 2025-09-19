@@ -8,7 +8,10 @@ on:
 
 jobs:
   tests:
+    environment: dev
     runs-on: ubuntu-latest
+    env:
+      SECRET_KEY:${{ secrets.SECRET_KEY }}
     timeout-minutes: 10
 
     steps:
@@ -33,15 +36,6 @@ jobs:
           pip install -r requirements.txt
           pip install black isort flake8
 
-      - name: Create .env from GitHub Secrets/Vars
-        run: |
-          cat > .env << 'EOF'
-          DEBUG=True
-          SECRET_KEY=${{ secrets.SECRET_KEY }}
-          DB_ENGINE=sqlite3
-          ALLOWED_HOSTS=*
-          EOF
-
       - name: System deps for Pillow
         run: |
           sudo apt-get update
@@ -49,9 +43,9 @@ jobs:
 
       - name: Lint & Format
         run: |
-            isort --profile black --check-only --diff .
-            black --check .
-            flake8 .
+          isort --profile black --check-only --diff .
+          black --check .
+          flake8 .
 
       - name: Run tests
         timeout-minutes: 5
