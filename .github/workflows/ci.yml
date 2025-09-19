@@ -38,14 +38,11 @@ jobs:
           sudo apt-get update
            sudo apt-get install -y libjpeg-dev zlib1g-dev
 
-      - name: Run isort (check only)
-        run: isort --profile black --check-only --diff .
-
-      - name: Run black (check only)
-        run: black --check .
-
-      - name: Run flake8
-        run: flake8
+      - name: Lint & Format
+        run: |
+            isort --profile black --check-only --diff .
+            black --check .
+            flake8 .
 
       - name: Run tests
         timeout-minutes: 5
