@@ -37,7 +37,7 @@ jobs:
         run: |
           cat > .env << 'EOF'
           DEBUG=True
-          SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}
+          SECRET_KEY=${{ secrets.SECRET_KEY }}
           DB_ENGINE=sqlite3
           ALLOWED_HOSTS=*
           EOF
