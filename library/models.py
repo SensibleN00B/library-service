@@ -2,12 +2,12 @@ from django.db import models
 from django.db.models import Q
 
 
-class CoversStatus(models.TextChoices):
-    HARD = "hard", "Hard"
-    SOFT = "soft", "Soft"
-
-
 class Book(models.Model):
+
+    class CoversStatus(models.TextChoices):
+        HARD = "hard", "Hard"
+        SOFT = "soft", "Soft"
+
     title = models.CharField(max_length=64, null=False)
     author = models.CharField(max_length=64, null=False)
     cover = models.CharField(
