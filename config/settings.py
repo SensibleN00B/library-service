@@ -32,6 +32,8 @@ DEBUG = os.getenv("DEBUG", default=True)
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = ["127.0.0.1", "localhost"]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -45,12 +47,14 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_spectacular",
     "django_filters",
+    "debug_toolbar",
     "library",
     "user",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
