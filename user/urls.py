@@ -6,8 +6,8 @@ from rest_framework_simplejwt.views import (
 )
 
 from user.views import (
-    UserCreateView,
     ManageUserView,
+    UserCreateView,
 )
 
 urlpatterns = [
