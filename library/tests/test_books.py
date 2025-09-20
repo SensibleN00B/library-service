@@ -1,6 +1,8 @@
-from django.test import TestCase
-from library.models import Book, CoversStatus
 from django.db.utils import IntegrityError
+from django.test import TestCase
+
+from library.models import Book, CoversStatus
+
 
 class BookModelTest(TestCase):
 
@@ -9,7 +11,7 @@ class BookModelTest(TestCase):
             title="Test Book",
             author="Serhii Developer",
             daily_fee=5.0,
-            inventory=10
+            inventory=10,
         )
         self.assertEqual(str(book), "Test Book by Serhii Developer")
 
